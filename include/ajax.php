@@ -11,14 +11,6 @@ function get_data() {
     {
         $uk = get_post_meta($_POST['post_id'], "uk", true);
         $us = get_post_meta($_POST['post_id'], "us", true);
-        $default_video = get_post_meta($_POST['post_id'], "default_video", true);
-        $left_handed_video = get_post_meta($_POST['post_id'], "left_handed_video", true);
-
-        if ($_POST['lang'] == "default_video") {
-            echo json_encode([$default_video[0], $default_video[0]]);
-        } else {
-            echo json_encode([$left_handed_video[0], $left_handed_video[0]]);
-        }
         wp_die();
     }
     else
