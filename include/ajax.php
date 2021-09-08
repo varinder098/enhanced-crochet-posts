@@ -11,6 +11,12 @@ function get_data() {
     {
         $uk = get_post_meta($_POST['post_id'], "uk", true);
         $us = get_post_meta($_POST['post_id'], "us", true);
+        
+        if ($_POST['lang'] == "uk") {
+            echo json_encode([$us[0], $uk[0]]);
+        } else {
+            echo json_encode([$uk[0], $us[0]]);
+        }
         wp_die();
     }
     else
