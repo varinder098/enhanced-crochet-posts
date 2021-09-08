@@ -73,7 +73,7 @@
 								<td>
 									<div class="mb-2 d-flex">
 										<input type="text" class="form-control mr-2" name="uk[]" value="<?php echo $uk[0][$i] ?>">
-										<a href="#" class="btn btn-sm btn-danger delete">&times;</a>
+										<a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a>
 									</div>
 								</td>
 							</tr>
