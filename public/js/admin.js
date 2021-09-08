@@ -7,15 +7,15 @@ $(document).ready(function() {
      
     
     if ($(".page_id").text() == "add") {
-       // var x = 1;
-       // var y = 1; 
+        var x = 1;
+        var y = 1; 
         var rowIdx =1;
         var rowIdy =1;
     } else {
         var rowIdx = $('.count').text();
         var rowIdy = $('.vcount').text();
-       // var x = $('.count').text();
-        //var y = $('.vcount').text();
+        var x = $('.count').text();
+        var y = $('.vcount').text();
 
         if(y==0)
         {
@@ -45,8 +45,8 @@ $(document).ready(function() {
 
       $(add_video).click(function(e) {
         e.preventDefault();
-        if (rowIdy < max_fields) {
-            rowIdy++;
+        if (y < max_fields) {
+            y++;
             $(vappend).append(`
                 <tr id="V${++rowIdy}">
                     <td style="display: flex;">
