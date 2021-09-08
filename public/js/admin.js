@@ -1,10 +1,9 @@
-
-
-
 $(document).ready(function() {
     var max_fields = 10;
     var add_button = $(".add");
     var append = $('.append');
+    var add_video = $(".video");
+    var vappend = $('.vappend');
      
     
     if ($(".page_id").text() == "add") {
@@ -15,8 +14,8 @@ $(document).ready(function() {
         var rowIdx = $('.count').text();
         var x = $('.count').text();
         var y = $('.vcount').text();
-        if(y==0)
-        {
+
+        if(y==0) {
             y=1;
         }
     }
@@ -27,65 +26,20 @@ $(document).ready(function() {
         $(append).append(`<tr id="R${++rowIdx}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${rowIdx}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="#" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
     });
 
-
-
-
-
-      $(append).on('click', '.delete', function () {
-        // Getting all the rows next to the row
-        // containing the clicked button
-        var child = $(this).closest('tr').nextAll();
-  
-        // Iterating across all the rows 
-        // obtained to change the index
+    $(append).on('click', '.delete', function () {
+    var child = $(this).closest('tr').nextAll();
         child.each(function () {
-  
-          // Getting <tr> id.
-          var id = $(this).attr('id');
-  
-          // Getting the <p> inside the .row-index class.
-          var idx = $(this).children(append).children('p');
-  
-          // Gets the row number from <tr> id.
-          var dig = parseInt(id.substring(1));
-  
-          // Modifying row index.
-          idx.html(` ${dig - 1}.`);
-  
-          // Modifying row id.
-          $(this).attr('id', `R${dig - 1}`);
+            var id = $(this).attr('id');
+            var idx = $(this).children(append).children('p');
+            var dig = parseInt(id.substring(1));
+            idx.html(` ${dig - 1}.`);
+            $(this).attr('id', `R${dig - 1}`);
         });
-  
-        // Removing the current row.
-        $(this).closest('tr').remove();
-  
-        // Decreasing total number of rows by 1.
-        rowIdx--;
-      });
+    $(this).closest('tr').remove();
+    rowIdx--;
+    });
 
-
-    ///////////////////
-
-        var add_video = $(".video");
-    var vappend = $('.vappend');
-
-
-
-  if ($(".page_id").text() == "add") {
-        
-        var y = 1; 
-        var rowIdy =1;
-    } else {
-        var rowIdy = $('.vcount').text();
-
-        var y = $('.vcount').text();
-        if(y==0)
-        {
-            y=1;
-        }
-    }
-
-      $(add_video).click(function(e) {
+    $(add_video).click(function(e) {
         e.preventDefault();
         if (y < max_fields) {
             y++;
@@ -109,7 +63,6 @@ $(document).ready(function() {
                         </div>
                     </td>
                 </tr>`); //add input box
-        
         } 
         else {
             alert('You Reached the limits')
@@ -117,77 +70,17 @@ $(document).ready(function() {
     });
 
     $(vappend).on('click', '.deletes', function () {
-  
-        // Getting all the rows next to the row
-        // containing the clicked button
         var child = $(this).closest('tr').nextAll();
-  
-        // Iterating across all the rows 
-        // obtained to change the index
-        child.each(function() {
-  
-          // Getting <tr> id.
-          var id = $(this).attr('id');
-  
-          // Getting the <p> inside the .row-index class.
-          var idy = $(this).children(vappend).children('span');
-  
-          // Gets the row number from <tr> id.
-          var digy = parseInt(id.substring(1)-1);
-  
-          // Modifying row index.
-          idy.html(`${digy}.`);
-  
-          // Modifying row id.
-          $(this).attr('id', `V${digy}`);
-        });
-  
-        // Removing the current row.
+            child.each(function() {
+                var id = $(this).attr('id');
+                var idy = $(this).children(vappend).children('span');
+                var digy = parseInt(id.substring(1)-1);
+                idy.html(`${digy}.`);
+                $(this).attr('id', `V${digy}`);
+            });
         $(this).closest('tr').remove();
-  
-        // Decreasing total number of rows by 1.
         rowIdy--;
       });
-
-
-   
-
-
-
-
-    $(document).on("click", ".delete", function(e) {
-        e.preventDefault();
-      
-        $(this).closest('tr').remove();
-        x--;
-    })
-
-    $(document).on("click", ".deletes", function(e) {
-        e.preventDefault();
-
-
-
-
-
-          /////////////////////////////////
-         $.ajax({
-                type: "post",
-                url: $(".admin_url").attr("value"),
-                dataType: 'json',
-                data: {
-                    action: 'delete_data',
-                    post_id: $(".post_id").attr("value"),
-                    
-                },
-                success: function(data) {
-                  console.log(data)
-                }
-            });
-         ////////////////////////////////////
-
-     $(this).closest('tr').remove();
-        y--;
-    })
 
     $(function() {
         var $tabButtonItem = $('#tab-button li'),
@@ -222,7 +115,6 @@ $(document).ready(function() {
 
     function copyToClipboard(text) {
       if (window.clipboardData && window.clipboardData.setData) {
-        // IE specific code path to prevent textarea being shown while dialog is visible.
         return clipboardData.setData("Text", text);
 
       } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
