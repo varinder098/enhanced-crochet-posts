@@ -7,22 +7,26 @@ $(document).ready(function() {
      
     
     if ($(".page_id").text() == "add") {
-        var rowIdy = 1; 
+       // var x = 1;
+       // var y = 1; 
         var rowIdx =1;
+        var rowIdy =1;
     } else {
         var rowIdx = $('.count').text();
         var rowIdy = $('.vcount').text();
+       // var x = $('.count').text();
+        //var y = $('.vcount').text();
 
-        if(rowIdy==0)
+        if(y==0)
         {
-            rowIdy=1;
+            y=1;
         }
     }
 
     $(add_button).click(function(e) {
         e.preventDefault();
         x++;
-        $(append).append(`<tr id="R${++rowIdx}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${rowIdx}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="#" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
+        $(append).append(`<tr id="R${++rowIdx}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${rowIdx}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
     });
 
 
@@ -41,8 +45,8 @@ $(document).ready(function() {
 
       $(add_video).click(function(e) {
         e.preventDefault();
-        if (y < max_fields) {
-            y++;
+        if (rowIdy < max_fields) {
+            rowIdy++;
             $(vappend).append(`
                 <tr id="V${++rowIdy}">
                     <td style="display: flex;">
@@ -59,7 +63,7 @@ $(document).ready(function() {
                     </td>
                     <td style="vertical-align: inherit;">
                         <div class="mb-2 d-flex">
-                            <a href="#" class="btn btn-sm btn-danger deletes">&times;</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger deletes">&times;</a>
                         </div>
                     </td>
                 </tr>`); //add input box
@@ -80,16 +84,7 @@ $(document).ready(function() {
             });
         $(this).closest('tr').remove();
         rowIdy--;
-      });
-
-    $(document).on("click", ".delete", function(e) {
-        e.preventDefault();
-        $(this).closest('tr').remove();
-        x--;
-    })
-
-    $(document).on("click", ".deletes", function(e) {
-        e.preventDefault();
+       /////////////////////////
         $.ajax({
                 type: "post",
                 url: $(".admin_url").attr("value"),
@@ -101,10 +96,8 @@ $(document).ready(function() {
                 success: function(data) {
                   console.log(data)
                 }
-            });
-        $(this).closest('tr').remove();
-        y--;
-    })
+        });
+    });
 
     $(function() {
         var $tabButtonItem = $('#tab-button li'),
