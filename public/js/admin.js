@@ -42,6 +42,7 @@ $(document).ready(function() {
         $(this).closest('tr').remove();
         rowIdx--;
       });
+      bb
 
       $(add_video).click(function(e) {
         e.preventDefault();
