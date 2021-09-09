@@ -1,6 +1,6 @@
 <?php 
 
-bb
+
 /*make Shortcode for video*/
 function make_video_shortcode($attr) 
 {
