@@ -28,3 +28,8 @@ function get_data() {
 }
 add_action('wp_ajax_nopriv_get_data', 'get_data');
 add_action('wp_ajax_get_data', 'get_data');
+
+
+
+
+
