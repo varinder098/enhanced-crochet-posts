@@ -72,15 +72,15 @@ function save_function_post_meta($post_id) {
         }
         else
         {
-            $url = [];
+            /*$url = [];*/
             for($i = 0; $i < count($_FILES['default_video']['name']);$i++) 
             {
                 $upload = wp_upload_bits($_FILES['default_video']['name'][$i], null, file_get_contents($_FILES['default_video']['tmp_name'][$i]));
-                $url[] = $upload['url'];
+                add_post_meta($post_id, 'default_video_'.$i,$upload['url']);
+                //$url[] = $upload['url'];
+    }
             }
         }
-        update_post_meta($post_id, 'default_video',$url);
-    }
     
     if(!empty($_FILES['left_handed_video']['name'][0]))//if user upload some video
     {
@@ -95,14 +95,14 @@ function save_function_post_meta($post_id) {
         }
         else
         {
-            $url=[];
+            //$url=[];
             for($i = 0; $i < count($_FILES['left_handed_video']['name']);$i++) 
             {
                 $upload = wp_upload_bits($_FILES['left_handed_video']['name'][$i], null, file_get_contents($_FILES['left_handed_video']['tmp_name'][$i]));
-                $url[] = $upload['url'];
+        add_post_meta($post_id, 'left_handed_video_'.$i,$upload['url']);
+                //$url[] = $upload['url'];
             };
         }
-        update_post_meta($post_id, 'left_handed_video',$url);
     } 
 }
 add_action('save_post', 'save_function_post_meta', 20, 3);
