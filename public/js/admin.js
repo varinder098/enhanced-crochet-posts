@@ -82,6 +82,7 @@ $(document).ready(function() {
                 idy.html(`${digy}.`);
                 $(this).attr('id', `V${digy}`);
             });
+            //////////////////////
         $(this).closest('tr').remove();
         rowIdy--;
        /////////////////////////
