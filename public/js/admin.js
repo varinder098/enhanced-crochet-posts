@@ -82,22 +82,10 @@ $(document).ready(function() {
                 idy.html(`${digy}.`);
                 $(this).attr('id', `V${digy}`);
             });
-            ///////////////////
+
+        $(".deletes-record").append('<input type="hidden" name="deleted_video[]" value="'+$(this).attr('data-id')+'">');
         $(this).closest('tr').remove();
         rowIdy--;
-       /////////////////////////
-        $.ajax({
-                type: "post",
-                url: $(".admin_url").attr("value"),
-                dataType: 'json',
-                data: {
-                    action: 'delete_data',
-                    post_id: $(".post_id").attr("value"), 
-                },
-                success: function(data) {
-                  console.log(data)
-                }
-        });
     });
 
     $(function() {
