@@ -55,9 +55,30 @@ function save_function_post_meta($post_id) {
     if (!empty($_POST['uk'][0])) {
         update_post_meta($post_id, 'uk', [$_POST['uk']]);
         update_post_meta($post_id, 'us', [$_POST['us']]);
+
     }
+    ////////////
+
+    //array_splice();
+
+
+    ///////////
     $default_video = get_post_meta(get_the_ID(), "default_video", true);
+
     $left_handed_video = get_post_meta(get_the_ID(), "left_handed_video", true);//get existing data from db
+
+    $deleted_v = $_POST['deleted_video'];
+
+    if($deleted_v){
+        $k=0;
+        foreach ($deleted_v as $values) {
+            array_splice($default_video, $values-$k, 1);
+            array_splice($left_handed_video, $values-$k, 1);
+            $k++;
+        }
+        update_post_meta($post_id, 'default_video',$default_video);
+        update_post_meta($post_id, 'left_handed_video',$left_handed_video);
+    }
 
     if(!empty($_FILES['default_video']['name'][0]))
     {
@@ -72,15 +93,16 @@ function save_function_post_meta($post_id) {
         }
         else
         {
-            /*$url = [];*/
+            $url = [];
             for($i = 0; $i < count($_FILES['default_video']['name']);$i++) 
             {
                 $upload = wp_upload_bits($_FILES['default_video']['name'][$i], null, file_get_contents($_FILES['default_video']['tmp_name'][$i]));
-                add_post_meta($post_id, 'default_video_'.$i,$upload['url']);
-                //$url[] = $upload['url'];
-    }
+                $url[] = $upload['url'];
             }
         }
+
+        update_post_meta($post_id, 'default_video',$url);
+    }
     
     if(!empty($_FILES['left_handed_video']['name'][0]))//if user upload some video
     {
@@ -95,15 +117,17 @@ function save_function_post_meta($post_id) {
         }
         else
         {
-            //$url=[];
+            $url=[];
             for($i = 0; $i < count($_FILES['left_handed_video']['name']);$i++) 
             {
                 $upload = wp_upload_bits($_FILES['left_handed_video']['name'][$i], null, file_get_contents($_FILES['left_handed_video']['tmp_name'][$i]));
-        add_post_meta($post_id, 'left_handed_video_'.$i,$upload['url']);
-                //$url[] = $upload['url'];
+                $url[] = $upload['url'];
             };
         }
-    } 
+        update_post_meta($post_id, 'left_handed_video',$url);
+    }
+
+
 }
 add_action('save_post', 'save_function_post_meta', 20, 3);
 
