@@ -116,6 +116,7 @@ function save_function_post_meta($post_id) {
                 $url[] = $upload['url'];
             }
         }
+        /**/
         else
         {
             $url=[];
