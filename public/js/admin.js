@@ -21,6 +21,11 @@ $(document).ready(function() {
         {
             y=1;
         }
+
+        if(x==0)
+        {
+            x=1;
+        }
     }
 
     $(add_button).click(function(e) {
