@@ -57,50 +57,26 @@ function save_function_post_meta($post_id) {
         update_post_meta($post_id, 'us', [$_POST['us']]);
 
     }
-    ////////////
 
-    //array_splice();
-
-
-    ///////////
     $default_video = get_post_meta(get_the_ID(), "default_video", true);
 
     $left_handed_video = get_post_meta(get_the_ID(), "left_handed_video", true);//get existing data from db
 
-    if(!empty($_POST['deleted_video']))
-    {
-        $state = $_POST['deleted_video'];
+    if(!empty($_POST['deleted_video'])) {
+        foreach ($_POST['deleted_video'] as $key => $values) {
+            array_splice($default_video, $values-$key, 1);
+            array_splice($left_handed_video, $values-$key, 1);
 
-        foreach ($state as $key => $value) {
-            unset($default_video[$value]);
-            unset($left_handed_video[$value]);
-        }
-
-        $new_default_video = array_values($default_video);
-        $new_left_handed_video = array_values($left_handed_video);
-
-        update_post_meta($post_id, 'default_video',$default_video);
-        update_post_meta($post_id, 'left_handed_video',$left_handed_video);
-
-    }
-
-    
-
-   // $deleted_v = $_POST['deleted_video'];
-
-
-   /* if($deleted_v){
-        $k=0;
-        foreach ($deleted_v as $values) {
-            array_splice($default_video, $values-$k, 1);
-            array_splice($left_handed_video, $values-$k, 1);
-            $k++;
-        }*/
+            wp_delete_file($left_handed_video[$values-$key]);
+            //wp_delete_file($default_video[$values-$key]);
         
-    //}
+            update_post_meta($post_id, 'default_video',$default_video);
+            update_post_meta($post_id, 'left_handed_video',$left_handed_video);
+    }
+}
+/**/
 
-    if(!empty($_FILES['default_video']['name'][0]))
-    {
+    if(!empty($_FILES['default_video']['name'][0])) {
        if($default_video)
         {
             $url = $default_video;
