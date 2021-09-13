@@ -39,7 +39,7 @@
 				<tbody class="append">
 					<div class="page_id d-none" ><?php echo $page;?></div>
 					<div class="count d-none"><?php echo $check;?></div>
-
+<!--  -->
 					<?php if($check== 0)
 					{   ?>
 						<tr id="R1">
@@ -207,3 +207,4 @@
 <?php include( WPBAW_DIR . '/public/js/jquery.min.js');?>
 <?php include( WPBAW_DIR . '/public/js/admin.js');?>
 </script>
+<!--  -->
