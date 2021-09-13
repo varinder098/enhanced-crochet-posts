@@ -1,6 +1,7 @@
 
 
 
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a17a6a2519.js" crossorigin="anonymous"></script>
@@ -100,7 +101,7 @@
 	</div> -->
 	<div id="tab03" class="tab-contents">
 		<div class="container">
-			<table class="table table-striped">
+			<table class="table table-striped deletes-record">
 				<thead>
 					<tr>
 						<th class="text-center"><strong style="color: coral;padding: 8px 10px;"> DEFAULT</strong></th>
@@ -163,7 +164,7 @@
 									<div class="mb-2 d-flex">								
 											<button value="<?php echo "[default width='260' height='200' videoid=".$i."]" ?>"  class="btn btn-sm btn-primary" onclick="copy(event)">Copy to clipboard</button>&nbsp;
 
-											<a href="javascript:void(0)" class="btn btn-sm btn-danger deletes">&times;</a>
+											<a href="javascript:void(0)" class="btn btn-sm btn-danger deletes" data-id="<?php echo $i;?>">&times;</a>
 									</div>
 								</td>
 							</tr>
