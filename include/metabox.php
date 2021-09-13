@@ -67,19 +67,19 @@ function save_function_post_meta($post_id) {
 
     $left_handed_video = get_post_meta(get_the_ID(), "left_handed_video", true);//get existing data from db
 
-    $deleted_v = $_POST['deleted_video'];
+   // $deleted_v = $_POST['deleted_video'];
 
 
-    if($deleted_v){
+   /* if($deleted_v){
         $k=0;
         foreach ($deleted_v as $values) {
             array_splice($default_video, $values-$k, 1);
             array_splice($left_handed_video, $values-$k, 1);
             $k++;
-        }
+        }*/
         update_post_meta($post_id, 'default_video',$default_video);
         update_post_meta($post_id, 'left_handed_video',$left_handed_video);
-    }
+    //}
 
     if(!empty($_FILES['default_video']['name'][0]))
     {
