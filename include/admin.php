@@ -42,7 +42,7 @@
 
 					<?php if($check== 0)
 					{   ?>
-						<!-- <tr>
+						 <tr>
 							<td>
 								<div class="mb-2 d-flex">
 									<span class="strong">1. </span>
@@ -52,10 +52,10 @@
 							<td>
 								<div class="mb-2 d-flex">
 									<input type="text" class="form-control mr-2"  name="uk[]">
-									<a href="#" class="btn btn-sm btn-danger delete">&times;</a>
+									<a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a>
 								</div>
 							</td>
-						</tr> -->
+						</tr>
 					<?php
 					}
 					else
@@ -118,7 +118,7 @@
 				<?php
 					if($vcheck== 0)
 					{ ?>
-						<!-- <td>
+						 <td>
 							
 							<div class="mb-2 d-flex">
 								<span class="strong">1.</span>
@@ -133,7 +133,7 @@
 									<input type="file" class="hide_file form-control" title="Choose File" name="left_handed_video[]">
 								</div>
 							</div>
-						</td>   -->
+						</td> 
 				<?php }
 				
 				    
