@@ -31,7 +31,7 @@ $(document).ready(function() {
     $(add_button).click(function(e) {
         e.preventDefault();
         x++;
-        $(append).append(`<tr id="R${++rowIdx}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${rowIdx}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
+        $(append).append(`<tr id="R${x}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${x}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
     });
 
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
                 $(this).attr('id', `R${dig - 1}`);
             });
         $(this).closest('tr').remove();
-        rowIdx--;
+        x--;
       });
 
       $(add_video).click(function(e) {
