@@ -123,14 +123,14 @@
 							<div class="mb-2 d-flex">
 								<span class="strong">1.</span>
 								<div class="custom-file">
-									<input type="file" class="hide_file form-control" title="Choose File" name="default_video[]">
+									<input type="file" class="hide_file form-control" title="Choose File" name="default_video[]" accept=" video/*">
 								</div>
 							</div>
 						</td>
 						<td>
 							<div class="mb-2 d-flex">
 								<div class="custom-file">
-									<input type="file" class="hide_file form-control" title="Choose File" name="left_handed_video[]">
+									<input type="file" class="hide_file form-control" title="Choose File" name="left_handed_video[]" accept=" video/*">
 								</div>
 							</div>
 						</td> 
