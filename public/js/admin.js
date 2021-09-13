@@ -53,9 +53,9 @@ $(document).ready(function() {
         if (y < max_fields) {
             y++;
             $(vappend).append(`
-                <tr id="V${++rowIdy}">
+                <tr id="V${y}">
                     <td style="display: flex;">
-                        <span class="strong">${rowIdy}.</span>
+                        <span class="strong">${y}.</span>
                         <div class="ml-2 mb-2 d-flex">
                             <input type="file" class="hide_file form-control" title="Choose File" name="default_video[]" accept=" video/*">
                         </div>
@@ -90,7 +90,7 @@ $(document).ready(function() {
 
         $(".deletes-record").append('<input type="hidden" name="deleted_video[]" value="'+$(this).attr('data-id')+'">');
         $(this).closest('tr').remove();
-        rowIdy--;
+        y--;
     });
 
     $(function() {
