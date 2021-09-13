@@ -12,7 +12,7 @@ function custom_meta_box_markup($post_id) {
     $left_handed_video = get_post_meta($id, "left_handed_video", true);
 
 
-   echo"<pre>";print_r($left_handed_video);exit;
+   //echo"<pre>";print_r($left_handed_video);exit;
 
     $vcheck = array();
     if (empty($default_video)) {
