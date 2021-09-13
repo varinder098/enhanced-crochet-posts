@@ -47,7 +47,7 @@ $(document).ready(function() {
         $(this).closest('tr').remove();
         x--;
       });
-
+/**/
       $(add_video).click(function(e) {
         e.preventDefault();
         if (y < max_fields) {
