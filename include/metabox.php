@@ -69,7 +69,7 @@ function save_function_post_meta($post_id) {
 
     $deleted_v = $_POST['deleted_video'];
 
-echo "hi";
+
     if($deleted_v){
         $k=0;
         foreach ($deleted_v as $values) {
