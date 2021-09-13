@@ -39,20 +39,20 @@
 				<tbody class="append">
 					<div class="page_id d-none" ><?php echo $page;?></div>
 					<div class="count d-none"><?php echo $check;?></div>
-<!--  -->
+
 					<?php if($check== 0)
 					{   ?>
-						 <tr>
+						<tr id="R1">
 							<td>
-								<div class="mb-2 d-flex">
-									<span class="strong">1. </span>
+								<div class="ml-2 mb-2 d-flex">
+									<span class="strong"> </span>
 									<input type="text" class="form-control" name="us[]">
 								</div>
+								<p style=" margin-top: -29px;"> 1. </p>
 							</td>
 							<td>
 								<div class="mb-2 d-flex">
-									<input type="text" class="form-control mr-2"  name="uk[]">
-									<a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a>
+									<input type="text" class="form-control mr-2" name="uk[]">
 								</div>
 							</td>
 						</tr>
