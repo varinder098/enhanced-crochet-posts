@@ -19,7 +19,7 @@ function custom_meta_box_markup($post_id) {
     } else {
         $vcheck = count($default_video);
     }
-    
+    /**/
     $check = array();
     if (empty($uk)) {
         $check = 0;
