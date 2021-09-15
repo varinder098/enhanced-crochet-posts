@@ -124,7 +124,7 @@
 							<div class="mb-2 d-flex">
 								<span class="strong">1.</span>
 								<div class="custom-file">
-									<input type="file" class="hide_file form-control" title="Choose File" name="default_video[]" accept=" video/*">
+									<input type="file" class="hide_file	form-control" title="Choose File" name="default_video[]" accept=" video/*">
 								</div>
 							</div>
 						</td>
@@ -181,7 +181,7 @@
 						</td>
 						<td class="text-center">
 
-							<button onclick="$('#post').submit();" class="btn btn-sm button-primary font"> Save <i class="fas fa-check"></i></button>
+							<button id="save_videos" class="btn btn-sm button-primary font"> Save <i class="fas fa-check"></i></button>
 						</td>
 					</tr>
 				</tfoot>
@@ -209,3 +209,4 @@
 <?php include( WPBAW_DIR . '/public/js/admin.js');?>
 </script>
 <!--  -->
+
