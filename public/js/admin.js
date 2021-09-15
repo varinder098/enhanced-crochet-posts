@@ -4,28 +4,15 @@ $(document).ready(function() {
     var append = $('.append');
     var add_video = $(".video");
     var vappend = $('.vappend');
-     
     
     if ($(".page_id").text() == "add") {
         var x = 1;
-        var y = 1; 
-        var rowIdx =1;
-        var rowIdy =1;
+        var y = 1;
     } else {
-        var rowIdx = $('.count').text();
-        var rowIdy = $('.vcount').text();
         var x = $('.count').text();
         var y = $('.vcount').text();
-
-        if(y==0)
-        {
-            y=1;
-        }
-
-        if(x==0)
-        {
-            x=1;
-        }
+        if(y==0){ y=1; }
+        if(x==0){ x=1; }
     }
 
     $(add_button).click(function(e) {
@@ -94,7 +81,15 @@ $(document).ready(function() {
                 $(this).attr('id', `V${digy}`);
             });
 
-        $(".deletes-record").append('<input type="hidden" name="deleted_video[]" value="'+$(this).attr('data-id')+'">');
+            var x=$(this).attr('data-id');
+            if(x===undefined)
+            {
+            }else{
+                 $(".deletes-record").append('<input type="hidden" name="deleted_video[]" value="'+x+'">');
+                
+            }
+
+       
         $(this).closest('tr').remove();
         y--;
     });
@@ -152,8 +147,39 @@ $(document).ready(function() {
       }
     }
 
+// this code is limt to videos less then 40 mb 
+
     $(document).on('change', '.hide_file', function (event) {
         $(this).next('.hide_file').html(event.target.files[0].name);
+        $(this).addClass("uploaded");
     })
+
+    $(document).on('click', '#save_videos', function (e) {
+         e.preventDefault();//prevent form from submit
+         check();//call check function
+       
+    });
+    $(document).on('click', '#publish', function (e) {
+         e.preventDefault();//prevent form from submit
+         check();//call check function
+    });
+
+    function check(){//define check function
+        var hide_file = document.getElementsByClassName('uploaded');
+        var imageSizeArr = 0;
+        for (var i = 0; i <hide_file.length; i++) {
+           imageSizeArr += parseInt(hide_file[i].files[0].size);
+        }
+        if(imageSizeArr<40000000){//40 mb limt videos 
+           //console.log(imageSizeArr);
+           $('#post').submit();
+        }else{
+            alert("Please upload videos less than 40 mb");
+        }
+    }
+    
+
 });
-/**/
+
+
+       
