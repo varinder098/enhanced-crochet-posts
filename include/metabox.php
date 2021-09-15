@@ -67,9 +67,11 @@ function save_function_post_meta($post_id) {
         foreach ($_POST['deleted_video'] as $key => $values) {
             array_splice($default_video, $values-$key, 1);
             array_splice($left_handed_video, $values-$key, 1);
+         
 
-            wp_delete_file($left_handed_video[$values-$key]);
-            //wp_delete_file($default_video[$values-$key]);
+
+
+         
         
             update_post_meta($post_id, 'default_video',$default_video);
             update_post_meta($post_id, 'left_handed_video',$left_handed_video);
