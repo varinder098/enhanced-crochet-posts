@@ -32,13 +32,18 @@ add_action('wp_ajax_get_data', 'get_data');
  */
 function update_limit() {
 
-    $htaccess = get_home_path().".htaccess";
-    $lines = array();
-    $lines[] = "php_value post_max_size 300M";
-    $lines[] = "php_value upload_max_filesize 300M";
-    insert_with_markers($htaccess, "MyPlugin", $lines);
+    try {
+        $htaccess = get_home_path().".htaccess";
+        $lines = array();
+        $lines[] = "php_value post_max_size ".$_POST['limit']."M";
+        $lines[] = "php_value upload_max_filesize ".$_POST['limit']."M";
+        insert_with_markers($htaccess, "MyPlugin", $lines);
+        echo json_encode(["status"=>200,"message"=>"Limit Updated Successfully"]);
+    }
 
-    echo json_encode(["status"=>200]);
+    catch (customException $e) {
+      echo json_encode(["status"=>201,$e->errorMessage()]);
+    }
     wp_die();
 }
 add_action('wp_ajax_nopriv_update_limit', 'update_limit');
