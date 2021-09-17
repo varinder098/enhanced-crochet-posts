@@ -172,3 +172,7 @@
 #my-meta-box .custom-file {
     height: 0px !important;
 }
+
+.modal-dialog {
+    margin: 6.75rem auto !important;
+}
