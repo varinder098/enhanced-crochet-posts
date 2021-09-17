@@ -44,7 +44,7 @@ function frontend_code($content) {
         }
         $content.= include (WPBAW_DIR . '/include/frontpage.php');
         remove_filter('the_content', 'frontend_code');
-        return '<div id="data_content">' . $content . '</div>';
+        return '<div id="data_content">' . rtrim($content , '1') . '</div>';
     } else {
         return $content;
     }
