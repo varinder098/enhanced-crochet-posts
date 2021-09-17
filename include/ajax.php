@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 /**
@@ -28,6 +25,21 @@ function get_data() {
 }
 add_action('wp_ajax_nopriv_get_data', 'get_data');
 add_action('wp_ajax_get_data', 'get_data');
+
+
+/**
+ * Update Upload max size limit
+ */
+function update_limit() {
+
+    $htaccess = get_home_path().".htaccess";
+    $lines = array();
+    $lines[] = "php_value post_max_size 300M";
+    $lines[] = "php_value upload_max_filesize 300M";
+    insert_with_markers($htaccess, "MyPlugin", $lines);
+}
+add_action('wp_ajax_nopriv_update_limit', 'update_limit');
+add_action('wp_ajax_update_limit', 'update_limit');
 
 
 
