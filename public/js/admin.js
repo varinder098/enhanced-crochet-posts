@@ -163,7 +163,11 @@ $(document).ready(function() {
         if(imageSizeArr<limit*1024*1024){
            $('#post').submit();
         }else{
-            alert("Please upload videos less than "+limit+" MB");
+            if (confirm("Please upload videos less than "+limit+" MB, are you want to change the limit?") == true) {
+                localStorage.removeItem("wp_limit");
+                localStorage.setItem("second_time",limit);
+                location.reload();
+            }
         }
     }
 
@@ -172,12 +176,20 @@ $(document).ready(function() {
         if(limit==null || limit=="")
         {
             $(".message").text("Please fill the field");
+            $(".main").removeClass("d-none").addClass("bg-danger");
+            return false;
+        }
+        else if(limit.match(/^[0-9]+$/) == null)
+        {
+            $(".message").text("Only numbers allowed");
+            $(".main").removeClass("d-none").addClass("bg-danger");
             return false;
         }
         else if(limit.length>3)
         {
-             $(".message").text("Please no more than 3 words");
-             return false;
+            $(".message").text("Please no more than 3 words");
+            $(".main").removeClass("d-none").addClass("bg-danger");
+            return false;
         }
         else
         {
@@ -194,6 +206,8 @@ $(document).ready(function() {
                     if(data.status==200) {
                        localStorage.setItem("wp_limit",limit);
                        $(".message").text(data.message);
+                       $(".main").removeClass("d-none").removeClass("bg-danger").addClass("bg-success");
+                       localStorage.removeItem("second_time");
                        setTimeout(function() {$("#myModal .close").click();}, 1300);
                     } else {
                        alert("something went wrong !! ask your developer");
@@ -207,7 +221,17 @@ $(document).ready(function() {
 
     setTimeout(function() {
         if (localStorage.getItem("wp_limit") === null) {
-            $(".checklimit").click();
+            if (localStorage.getItem("wp_limit") === null) {  
+                $(".checklimit").click();
+                if(localStorage.getItem("second_time")!=null)
+                {
+                    $("#limit").val(localStorage.getItem("second_time"));
+                }
+                else
+                {
+                    $("#limit").val(40);
+                }
+            }
         }
     }, 1300);
 });
