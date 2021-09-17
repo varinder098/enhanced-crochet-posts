@@ -21,7 +21,6 @@ $(document).ready(function() {
         $(append).append(`<tr id="R${x}"><td><div class="ml-2 mb-2 d-flex"><span class="strong"> </span><input type="text" class="form-control" name="us[]"></div><p style=" margin-top: -29px;"> ${x}. </p></td><td><div class="mb-2 d-flex"><input type="text" class="form-control mr-2" name="uk[]"><a href="javascript:void(0)" class="btn btn-sm btn-danger delete">&times;</a></div></td></tr>`); //add input box
     });
 
-
       $(append).on('click', '.delete', function () {
         var child = $(this).closest('tr').nextAll();
             child.each(function () {
@@ -35,11 +34,6 @@ $(document).ready(function() {
         x--;
 
       });
-
-
-
-/*hello */
-
 
       $(add_video).click(function(e) {
         e.preventDefault();
@@ -170,14 +164,15 @@ $(document).ready(function() {
         for (var i = 0; i <hide_file.length; i++) {
            imageSizeArr += parseInt(hide_file[i].files[0].size);
         }
-        if(imageSizeArr<40000000){//40 mb limt videos 
+        if(imageSizeArr<3000000000){//40 mb limt videos 
            //console.log(imageSizeArr);
            $('#post').submit();
         }else{
             alert("Please upload videos less than 40 mb");
         }
     }
-    
+
+    $(".checklimit").click();
 
 });
 
