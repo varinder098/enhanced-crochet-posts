@@ -170,6 +170,7 @@ $(document).ready(function() {
     }
 
     $(document).on('click', '#update_btn', function (e) {
+        var limit = $("#limit").val();
         $.ajax({ 
             type: "post",
                 url: $(".admin_url").attr("value"),
@@ -177,13 +178,13 @@ $(document).ready(function() {
                 data: {
                     action: 'update_limit',
                     post_id: $(".post_id").attr("value"),
-                    limit: $("#limit").val()
+                    limit: limit
                 },
             success: function (data) { 
                 if(data.status==200) {
                    localStorage.setItem("wp_limit",limit);
-                   $(".message").text("Limit Updated Successfully");
-                   setTimeout(function() {$('#myModal').modal('hide');}, 1300);
+                   $(".message").text(data.message);
+                   setTimeout(function() {$("#myModal .close").click();}, 1300);
                 } else {
                    alert("something went wrong !! ask your developer");
                 }
