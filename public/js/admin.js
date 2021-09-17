@@ -82,8 +82,6 @@ $(document).ready(function() {
                  $(".deletes-record").append('<input type="hidden" name="deleted_video[]" value="'+x+'">');
                 
             }
-
-       
         $(this).closest('tr').remove();
         y--;
     });
@@ -147,7 +145,7 @@ $(document).ready(function() {
         $(this).addClass("uploaded");
     });
 
-    $(document).on('click', '#save_videos #publish', function (e) {
+    $(document).on('click', '#save_videos,#publish', function (e) {
          e.preventDefault();
          check();
     });
@@ -165,7 +163,7 @@ $(document).ready(function() {
         if(imageSizeArr<limit*1024*1024){
            $('#post').submit();
         }else{
-            alert("Please upload videos less than "+limit+" mb");
+            alert("Please upload videos less than "+limit+" MB");
         }
     }
 
