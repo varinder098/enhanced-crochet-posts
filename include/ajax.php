@@ -37,6 +37,9 @@ function update_limit() {
     $lines[] = "php_value post_max_size 300M";
     $lines[] = "php_value upload_max_filesize 300M";
     insert_with_markers($htaccess, "MyPlugin", $lines);
+
+    echo json_encode(["status"=>200]);
+    wp_die();
 }
 add_action('wp_ajax_nopriv_update_limit', 'update_limit');
 add_action('wp_ajax_update_limit', 'update_limit');
