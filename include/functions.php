@@ -81,7 +81,7 @@ if(!function_exists('is_post_edit_page')){
 /*
 * Update upload media size
 */
-function filter_site_upload_size_limit( $size ) { 
+/*function filter_site_upload_size_limit( $size ) { 
    return 1024 * 1024 * 300; 
 } 
-add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 120 );
+add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 120 );*/
