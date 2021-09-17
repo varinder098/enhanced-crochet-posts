@@ -172,8 +172,11 @@ $(document).ready(function() {
         }
     }
 
-    $(".checklimit").click();
-
+    setTimeout(function() {
+        if (localStorage.getItem("wp_limit") === null) {
+            $(".checklimit").click();
+        }
+    }, 1300);
 });
 
 
