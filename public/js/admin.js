@@ -169,25 +169,39 @@ $(document).ready(function() {
 
     $(document).on('click', '#update_btn', function (e) {
         var limit = $("#limit").val();
-        $.ajax({ 
-            type: "post",
-                url: $(".admin_url").attr("value"),
-                dataType: 'json',
-                data: {
-                    action: 'update_limit',
-                    post_id: $(".post_id").attr("value"),
-                    limit: limit
-                },
-            success: function (data) { 
-                if(data.status==200) {
-                   localStorage.setItem("wp_limit",limit);
-                   $(".message").text(data.message);
-                   setTimeout(function() {$("#myModal .close").click();}, 1300);
-                } else {
-                   alert("something went wrong !! ask your developer");
+        if(limit==null || limit=="")
+        {
+            $(".message").text("Please fill the field");
+            return false;
+        }
+        else if(limit.length>3)
+        {
+             $(".message").text("Please no more than 3 words");
+             return false;
+        }
+        else
+        {
+            $.ajax({ 
+                type: "post",
+                    url: $(".admin_url").attr("value"),
+                    dataType: 'json',
+                    data: {
+                        action: 'update_limit',
+                        post_id: $(".post_id").attr("value"),
+                        limit: limit
+                    },
+                success: function (data) { 
+                    if(data.status==200) {
+                       localStorage.setItem("wp_limit",limit);
+                       $(".message").text(data.message);
+                       setTimeout(function() {$("#myModal .close").click();}, 1300);
+                    } else {
+                       alert("something went wrong !! ask your developer");
+                    }
                 }
-            }
-        });
+            });
+            return true;
+        }
         e.preventDefault();
     });
 
