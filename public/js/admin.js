@@ -141,36 +141,62 @@ $(document).ready(function() {
       }
     }
 
-// this code is limt to videos less then 40 mb 
-
+    // this code is to check the videos limit less than 40 mb 
     $(document).on('change', '.hide_file', function (event) {
         $(this).next('.hide_file').html(event.target.files[0].name);
         $(this).addClass("uploaded");
-    })
-
-    $(document).on('click', '#save_videos', function (e) {
-         e.preventDefault();//prevent form from submit
-         check();//call check function
-       
-    });
-    $(document).on('click', '#publish', function (e) {
-         e.preventDefault();//prevent form from submit
-         check();//call check function
     });
 
-    function check(){//define check function
+    $(document).on('click', '#save_videos #publish', function (e) {
+         e.preventDefault();
+         check();
+    });
+
+    function check(){
+        if (localStorage.getItem("wp_limit") === null) {
+            $(".checklimit").click();
+        }
+        var limit = localStorage.getItem("wp_limit");
         var hide_file = document.getElementsByClassName('uploaded');
         var imageSizeArr = 0;
         for (var i = 0; i <hide_file.length; i++) {
            imageSizeArr += parseInt(hide_file[i].files[0].size);
         }
-        if(imageSizeArr<3000000000){//40 mb limt videos 
-           //console.log(imageSizeArr);
+        if(imageSizeArr<limit){
            $('#post').submit();
         }else{
-            alert("Please upload videos less than 40 mb");
+            alert("Please upload videos less than "+limit+" mb");
         }
     }
+
+    $(document).on('click', '#update_btn', function (e) {
+        
+        var limit= $("#limit").val();
+        $.ajax({ 
+            type: "post",
+                url: $(".admin_url").attr("value"),
+                dataType: 'json',
+                data: {
+                    action: 'update_limit',
+                    post_id: $(".post_id").attr("value"),
+                    limit: limit
+                },
+            success: function (data) { 
+               if(data.status==200)
+               {
+                 localStorage.setItem("wp_limit",limit);
+               }
+               else
+               {
+                 alert("something went wrong !! ask your developer");
+               }
+            },
+            error: function (errorMessage) {
+                alert("something went wrong !! ask your developer");
+            }
+        });
+        e.preventDefault();
+    });
 
     setTimeout(function() {
         if (localStorage.getItem("wp_limit") === null) {
