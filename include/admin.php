@@ -1,7 +1,3 @@
-
-
-
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a17a6a2519.js" crossorigin="anonymous"></script>
@@ -13,19 +9,21 @@
 	<div class="tab-button-outer">
 		<ul id="tab-button">
 			<li><a href="#tab01">Translation</a></li>
-			<!-- <li><a href="#tab02">Images</a></li> -->
 			<li><a href="#tab03">Videos</a></li>
 		</ul>
 	</div>
 	<div class="tab-select-outer">
 		<select id="tab-select">
 			<option value="#tab01">Translation</option>
-			<!-- <option value="#tab02">Images</option> -->
 			<option value="#tab03">Videos</option>
 		</select>
 	</div>
 	<div class="d-none admin_url" value="<?php echo admin_url('admin-ajax.php'); ?>"></div>
 	<div class="d-none post_id" value="<?php echo get_the_ID(); ?>"></div>
+
+	<!-- Button to Open the Modal -->
+<button type="button" class="btn checklimit btn-primary d-none" data-toggle="modal" data-target="#myModal">
+</button>
 	
 	<div id="tab01" class="tab-contents">
 		<div class="container">
@@ -189,6 +187,31 @@
 		</div>
 	</div>
 </div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 	function copy(e) {
      e.preventDefault();
