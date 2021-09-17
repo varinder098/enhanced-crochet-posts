@@ -198,10 +198,10 @@
       </div>
       <!-- Modal body -->
       <div class="modal-body">
-      	<p class="text-success message"></p>
-        <div class="form-group">
-		    <label for="limit">Upload limit:</label>
-		    <input type="text" class="form-control" placeholder="300mb" pattern="^[0-9]*$" / id="limit">
+      	<div class="main d-none" style="padding:10px 10px;color: white;border-radius: 5px;"><strong class="message"></strong></div>
+        <div class="form-group" style="margin: 10px 0px;">
+		    <label for="limit"><strong>Upload limit: (MB)</strong></label>
+		    <input type="text" class="form-control" id="limit">
 		</div>
       </div>
       <!-- Modal footer -->
