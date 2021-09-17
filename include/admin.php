@@ -194,17 +194,21 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h5 class="modal-title">Please update wordpress (upload limit) to proceed</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        Modal body..
+        <div class="form-group">
+		    <label for="limit">Upload limit:</label>
+		    <input type="text" class="form-control" placeholder="300mb" id="limit">
+		</div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
+      	<button type="button" id="update_btn" class="btn btn-info">Update</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
 
