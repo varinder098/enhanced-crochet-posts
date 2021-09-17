@@ -37,7 +37,6 @@
 				<tbody class="append">
 					<div class="page_id d-none" ><?php echo $page;?></div>
 					<div class="count d-none"><?php echo $check;?></div>
-<!--  -->
 					<?php if($check== 0)
 					{   ?>
 						<tr id="R1">
@@ -202,7 +201,7 @@
       	<p class="text-success message"></p>
         <div class="form-group">
 		    <label for="limit">Upload limit:</label>
-		    <input type="text" class="form-control" placeholder="300mb" id="limit">
+		    <input type="text" class="form-control" placeholder="300mb" pattern="^[0-9]*$" / id="limit">
 		</div>
       </div>
       <!-- Modal footer -->
