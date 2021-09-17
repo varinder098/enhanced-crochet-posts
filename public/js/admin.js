@@ -162,7 +162,7 @@ $(document).ready(function() {
         for (var i = 0; i <hide_file.length; i++) {
            imageSizeArr += parseInt(hide_file[i].files[0].size);
         }
-        if(imageSizeArr<limit){
+        if(imageSizeArr<limit*1024*1024){
            $('#post').submit();
         }else{
             alert("Please upload videos less than "+limit+" mb");
