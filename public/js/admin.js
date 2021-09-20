@@ -219,10 +219,28 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
     setTimeout(function() {
         if (localStorage.getItem("wp_limit") === null) {
             if (localStorage.getItem("wp_limit") === null) {  
-                $(".checklimit").click();
+                modal.style.display = "block";
                 if(localStorage.getItem("second_time")!=null)
                 {
                     $("#limit").val(localStorage.getItem("second_time"));
@@ -234,6 +252,8 @@ $(document).ready(function() {
             }
         }
     }, 1300);
+
+    
 });
 
 
