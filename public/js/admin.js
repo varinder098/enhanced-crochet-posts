@@ -211,6 +211,10 @@ $(document).ready(function() {
                     }
                 });
             }
+            else
+            {
+                alert("aa");
+            }
         }
     }, 1300);  
 });
