@@ -33,12 +33,8 @@ add_action('wp_ajax_get_data', 'get_data');
 function update_limit() {
 
     try {
-        $htaccess = get_home_path().".htaccess";
-        $lines = array();
-        $lines[] = "php_value post_max_size ".$_POST['limit']."M";
-        $lines[] = "php_value upload_max_filesize ".$_POST['limit']."M";
-        insert_with_markers($htaccess, "MyPlugin", $lines);
-        echo json_encode(["status"=>200,"message"=>"Limit Updated Successfully"]);
+         $post_max_size = parse_ini_file("myini.ini");
+        echo json_encode(["status"=>200,"message"=>$post_max_size['post_max_size']]);
     }
 
     catch (customException $e) {
