@@ -22,8 +22,7 @@
 	<div class="d-none post_id" value="<?php echo get_the_ID(); ?>"></div>
 
 	<!-- Button to Open the Modal -->
-<button type="button" class="btn checklimit btn-primary d-none" data-toggle="modal" data-target="#myModal">
-</button>
+<button class="checklimit d-none" id="myBtn"></button>
 	
 	<div id="tab01" class="tab-contents">
 		<div class="container">
@@ -185,6 +184,30 @@
 			</table>
 		</div>
 	</div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+    	<h6 class="modal-title">Please update wordpress (upload limit) to proceed</h6>
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="main d-none" style="padding:10px 10px;color: white;border-radius: 5px;"><strong class="message"></strong></div>
+        <div class="form-group" style="margin: 10px 0px;">
+		    <label for="limit"><strong>Upload limit: (MB)</strong></label>
+		    <input type="text" class="form-control" id="limit">
+		</div>
+    </div>
+    <div class="modal-footer">
+    	<button type="button" id="update_btn" class="btn btn-info">Update</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
 </div>
 
 <!-- The Modal -->
