@@ -164,7 +164,6 @@ $(document).ready(function() {
         }
     }
 
-
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
@@ -185,38 +184,26 @@ $(document).ready(function() {
 
     setTimeout(function() {
         if (localStorage.getItem("wp_limit") === null) {
-            if (localStorage.getItem("wp_limit") === null) {  
-                
-                    $.ajax({ 
-                    type: "post",
-                        url: $(".admin_url").attr("value"),
-                        dataType: 'json',
-                        data: {
-                            action: 'update_limit',
-                            post_id: $(".post_id").attr("value"),
-                            limit: limit
-                        },
-                    success: function (data) { 
-                        console.log(data);
-                        /*if(data.status==200) {
-                            localStorage.setItem("wp_limit",limit);
-                            $("#limit").val(limit);
-                            modal.style.display = "block";
-                            setTimeout(function() {
-                                $("#myModal .close").click();
-                            }, 1300);
-                        } else {
-                           alert("something went wrong !! ask your developer");
-                        }*/
+            $.ajax({ 
+                type: "post",
+                    url: $(".admin_url").attr("value"),
+                    dataType: 'json',
+                    data: {
+                        action: 'update_limit',
+                        post_id: $(".post_id").attr("value"),
+                        limit: limit
+                    },
+                success: function (data) { 
+                    if(data.status==200) {
+                        localStorage.setItem("wp_limit",data.limit);
+                        console.log(data.limit);
+                    } else {
+                       alert("something went wrong !! ask your developer");
                     }
-                });
-            }
-            else
-            {
-                alert("aa");
-            }
+                }
+            });
         }
-    }, 1300);  
+    }, 1300);
 });
 
 
