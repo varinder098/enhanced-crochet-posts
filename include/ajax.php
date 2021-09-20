@@ -27,14 +27,26 @@ add_action('wp_ajax_nopriv_get_data', 'get_data');
 add_action('wp_ajax_get_data', 'get_data');
 
 
+function get_closest( $search, $arr ) {
+        $closest = null;
+
+        foreach ( $arr as $item ) {
+            if ( null === $closest || abs( $search - $closest ) > abs( $item - $search ) ) {
+                $closest = $item;
+            }
+        }
+
+        return $closest;
+    }
+
 /**
  * Update Upload max size limit
  */
 function update_limit() {
 
     try {
-         $post_max_size = parse_ini_file("myini.ini");
-        echo json_encode(["status"=>200,"message"=>$post_max_size['post_max_size']]);
+        $ini_size = ini_get('upload_max_filesize');
+        echo json_encode(["status"=>200,"limit"=>$ini_size]);
     }
 
     catch (customException $e) {
